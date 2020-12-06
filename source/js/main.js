@@ -1,5 +1,20 @@
 /* eslint-disable node/no-unsupported-features/node-builtins */
 (function($, moment, ClipboardJS, config) {
+    $(document).ready(function(){
+        if(navigator.userAgent.toLowerCase().includes("micromessenger")){
+            window.isWx = true;
+            $("#wx-redirect").show(800)
+        }
+    });
+    $("a.bookmark").click(function(){
+        if(navigator.userAgent.toLowerCase().includes("mac os x")){
+            $("#bookmark-text").text("请按下 ⌘ + D 收藏");
+        } else {
+            $("#bookmark-text").text("请按下 Ctrl + D 收藏");
+        }
+        
+    })
+
     $('.article img:not(".not-gallery-item")').each(function() {
         // wrap images with link and add caption if possible
         if ($(this).parent('a').length === 0) {
